@@ -1,0 +1,79 @@
+#!/system/bin/sh
+MODDIR=${0%/*}
+ro.fb.mode=1
+
+# Graphic
+debug.gralloc.gfx_ubwc_disable=0
+debug.sf.enable_advanced_sf_phase_offset=1
+debug.sf.enable_hwc_vds=1
+debug.sf.enable_gl_backpressure=1
+vendor.gralloc.disable_ubwc=0
+
+# Memory  properties
+ro.vendor.qti.sys.fw.bservice_enable=true
+
+# Touchscreen
+persist.vendor.qti.inputopts.enable=true
+persist.vendor.qti.inputopts.movetouchslop=0.6
+
+# JIT
+dalvik.vm.execution-mode=int:jit
+
+# Improve cache 
+persist.sys.dalvik.multithread=true
+persist.sys.dalvik.hyperthreading=true
+
+# Hardware Rendering
+debug.hwc.nodirtyregion=0
+debug.hwc.winupdate=1
+renderthread.skia.reduceopstasksplitting=true
+
+# Zygote Preforking
+persist.device_config.runtime_native.usap_pool_enabled=true
+
+# Disable vidc debugging
+vendor.vidc.debug.level=0
+vidc.debug.level=0
+
+# Graphic Optimization
+ro.min_pointer_dur=1
+
+# Stabilizer FPS
+debug.sf.showcpu=0
+
+# pool
+persist.sys.usap_pool_enabled=true
+
+# Dalvik
+dalvik.vm.heapmaxfree=8m
+dalvik.vm.heapminfree=256k
+dalvik.vm.heapstartsize=32m
+
+# Writeback
+vm.dirty_ratio=70
+vm.dirty_background_ratio=5
+
+# Media buff
+debug.stagefright.ccodec=1
+debug.stagefright.omx_default_rank=0
+media.aac_51_output_enabled=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-http=true
+media.stagefright.enable-player=true
+
+# IoR
+
+iorapd.readahead.enable=true
+ro.iorapd.enable=true
+ro.boottime.iorapd=true
+iorapd.perfetto.enable=true
+persist.device_config.runtime_native_boot.iorap_readahead_enable=true
+persist.vendor.qti.memory.enabIe=false
+persist.sys.ai_preload_cloud=0
+ro.lmk.use_minfree_levels=false
+ro.lmk.critical_upgrade=true
+ro.lmk.low=1001
+ro.lmk.medium=1001
+ro.lmk.critical=990
+ro.lmk.super_critical=845
